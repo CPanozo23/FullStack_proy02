@@ -1,0 +1,32 @@
+body{
+    margin:0 auto;
+    padding:0;
+}
+
+header{ background-color: orange;}
+
+header nav{
+    color: white;
+    padding:1em;
+}
+
+header nav a{
+    color: white
+}
+
+h2{text-align: center;}
+.forms{
+    border:1px solid grey;
+    max-width: 800px;
+    margin:auto
+}
+
+#formSelectRoute div, #formRoute div, #formStaff div{
+    display: flex;
+    margin:1em 0
+}
+
+#formSelectRoute div .label, #formRoute div .label, #formStaff div .label{
+    color:blue;
+    
+}

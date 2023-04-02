@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panozo - Rutas</title>
+    <link href="../assets/style/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Panozo</h1> |
+            <a href="../index.html">HOME</a> |
+            <a href="./route.html">RUTAS</a> |
+            <a href="./staff.html">PERSONAL</a>
+        </nav>
+        
+    </header>
+    <main>
+        <h2>Administrador de Personal</h2>
+        <section class="forms">
+            <form id="formStaff">
+                <div>
+                <label class="label" for="run"><span id="lbRun"></span>RUN</label>
+                <input type="text" name="run" id="run">
+                </div>
+                <div>
+                <label class="label" for="fName"><span id="lbFName"></span>Primer nombre</label>
+                <input type="text" name="fName" id="fName">
+            </div>
+            <div>
+                <label class="label" for="SName"><span id="lbSName"></span>Segundo nombre</label>
+                <input type="text" name="sName" id="sName">
+            </div>
+            <div>
+
+                <label class="label" for="fLastName"><span id="lbFlastName"></span>Primer apellido</label>
+                <input type="text" name="fLastName" id="fLastName">
+            </div>
+            <div>
+                <label class="label" for="mLastName"><span id="lbMlastName"></span>Segundo apellido</label>
+                <input type="text" name="mLastName" id="mLastName">
+            </div>
+            <div>
+                <label class="label" for="phone"><span id="lbPhone"></span>WhatsApp</label>
+                <input type="phone" name="phone" id="phone">
+            </div>
+            <div>
+                <label class="label" for="email"><span id="lbEmail"></span>Correo</label>
+                <input type="email" name="email" id="email">
+            </div>
+                <h3>Dirección</h3>
+                <div>
+                <label class="label" for="street"><span id="lbStreet"></span>Calle</label>
+                <input type="text" name="street" id="street">
+            </div>
+            <div>
+                <label class="label" for="stNumber"><span id="lbStNumber"></span>Número</label>
+                <input type="number" name="number" id="number">
+            </div>
+        </div>
+                <div id="information"></div>
+                <button type="submit" id="add">Agregar</button>
+            </form>
+        </section>
+        <section class="Datos"></section>
+    </main>
+</body>
+</html>

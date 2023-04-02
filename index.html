@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panozo - Asignación Recorridos</title>
+    <link href="./assets/style/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Panozo</h1> |
+            <a href="#">HOME</a> |
+            <a href="./pages/route.html">RUTAS</a> |
+            <a href="./pages/staff.html">PERSONAL</a>
+        </nav>
+        
+    </header>
+    <main>
+        <h2>Administrador de Asignación de Recorridos</h2>
+        <section class="forms">
+            <form id="formSelectRoute">
+                <!-- LISTA DESPLEGABLE DE PERSONAL -->
+                <div>
+                <label class="label" for="staff"><span id="lbStaff"></span>Seleccione a personal</label>
+            
+                <select name="staff" id="staff">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Persona 1</option>
+                    <option value="2">Persona 2</option>
+                    <option value="3">Persona 3</option>
+                </select>
+            </div>
+            <div>
+                <!-- INDICAR SI ASISTE CON HIJOS -->
+                <label class="label" for="childen"><span id="lbChildren"></span>¿Incluye alumnos?</label>
+                    <input type="radio" name="children" value="sí"> Sí
+                    <input type="radio" name="children" value="no" checked> No
+                &nbsp;&nbsp;&nbsp;&nbsp; <!--MEJORAR-->
+                <label class="label" for="childenQ"><span id="lbChildrenQ"></span>Cantidad</label>
+                <input type="number" name="childenQ" id="childenQ" value="0" disabled>
+                <!-- SELECCIONAR RUTA -->
+            </div>
+            <div>
+                <label class="label" for="route"><span id="lbRoute"></span>Recorrido</label>
+                <select name="route" id="route">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Recorrido 1</option>
+                    <option value="2">Recorrido 2</option>
+                    <option value="3">Recorrido 3</option>
+                </select>
+            </div>
+            
+                <!-- EVIDENCIAR SI HAY CUPO EN EL BUS AL SELECCIONAR RECORRIDO-->
+                <div id="information"></div>
+                <button type="submit" id="add">Agregar</button>
+            </form>
+        </section>
+        <section class="Datos"></section>
+    </main>
+</body>
+</html>
