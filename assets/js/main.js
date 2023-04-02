@@ -1,83 +1,135 @@
-//RUTAS
 const routes = []
-const id=0
-const addRoutesBtn = document.getElementById('addRoute')
+const people = []
 
-addRoutesBtn.addEventListener('click', createRoute)
+//----------------- ONLOAD --------------------------------
+function readDataLSroutes(){
+    if(localStorage.getItem('routes')!==null){        
+        const routesRead=JSON.parse(localStorage.getItem('routes'))
+        const sectionRoute= document.getElementById('routeSelect')
+        routesRead.forEach((element) => {
+            routes.push(element)           
+            sectionRoute.innerHTML += `
+                <option value="${element.id}">${element.name}</option>
+                `
+        })
+    } 
+}
 
-function createRoute(event){
+function readDataLSstaff(){
+    if(localStorage.getItem('people')!==null){    
+        const peopleRead=JSON.parse(localStorage.getItem('people'))
+        const sectionPeople= document.getElementById('staffSelect')
+        peopleRead.forEach((element) => {
+            people.push(element)           
+            sectionPeople.innerHTML += `
+                <option value="${element.id}">${element.fName} ${element.lastName} ${element.sLastName}</option>
+                `
+        })
+    }
+}
+
+readDataLSroutes()
+readDataLSstaff()
+
+//Disabled/Enabled Children Quantity
+document.getElementById('childrenS').addEventListener('click', () => document.getElementById('childrenQ').disabled=false)
+
+document.getElementById('childrenN').addEventListener('click', () => document.getElementById('childrenQ').disabled=true)
+
+
+//------------------------------- ADD -------------------------------
+const routePeople = []
+let idAux=0
+const addRPBtn = document.getElementById('addRP')
+
+addRPBtn.addEventListener('click', createRP)
+
+function createRP(event){
     event.preventDefault()
-    const ruta = readFormRoute()
-    if(ruta!=undefined){
-        createRowRoute(ruta)
-        cleanFormRoute()
+    const routeStaff = readFormRP()
+    if(routeStaff!=undefined){
+        createRowRP(routeStaff)
+        cleanFormRP()
         saveDataLocalStorage()
     }
 }
 
-function readFormRoute(event){
+function readFormRP(event){
     
-    const inputRouteName= document.getElementById('routeName')
-    const inputRouteSeat= document.getElementById('seat')
-    const inputBusStop = [document.getElementById('busStop1'), document.getElementById('busStop2'), document.getElementById('busStop3'), document.getElementById('busStop4'), document.getElementById('busStop5'), document.getElementById('busStop6'), document.getElementById('busStop7'), document.getElementById('busStop8'), document.getElementById('busStop9'), document.getElementById('busStop10')]
+    const inputStaff= document.getElementById('staffSelect')
+    let inputChildren=''
+    let inputChildrenQ=0
 
-    if(inputRouteName.value === '' || inputRouteSeat.value === '' || inputBusStop[0].value===''){
-        document.getElementById('routeInformation').innerHTML=`* Faltan datos`
+    if(document.getElementById('childrenS').checked===true){
+        inputChildren=true
+        inputChildrenQ= parseInt(document.getElementById('childrenQ').value)
     }else{
-        document.getElementById('routeInformation').innerHTML=``
-        //id++
-        const route = {
-            //id:id,
-            name: inputRouteName.value,
-            seat: inputRouteSeat.value,
-            busStop: []
+        inputChildren=false
+    }
+
+    const inputRoute= document.getElementById('routeSelect')
+
+    if(parseInt(inputStaff.value)===0 || parseInt(inputRoute.value)===0){
+        document.getElementById('information').innerHTML=`* Faltan datos`
+    }else{
+        document.getElementById('information').innerHTML=`aa`
+        idAux++
+        //search staff by id
+        const staff = people.find((element)=>element.id===parseInt(inputStaff.value))
+        
+        //search route by id
+        const route = routes.find((element)=>element.id===parseInt(inputRoute.value))
+
+        const routeStaff = {
+            id:idAux,
+            staff: staff,
+            children: inputChildren,
+            childrenQ: inputChildrenQ,
+            route: route
         }
 
-        inputBusStop.forEach((el) => {
-            if(el.value != ''){route.busStop.push(el.value)}
-        })
-        routes.push(route)
-        console.log(route)
-        return route
+        routePeople.push(routeStaff)
+        console.log(routeStaff)
+        return routeStaff
     }
 }
 
-function createRowRoute(ruta){
-    const sectionRoute= document.getElementById('routeData')
-    sectionRoute.innerHTML += `
-        <article class="routeSpecific">
-            <div class="routeInfo">
-                <p><span>${ruta.name}</span> | Asientos: ${ruta.seat}</p>
-                <h4>Paradas</h4>
-                <p>${ruta.busStop}</p>
-                
+
+function createRowRP(routeStaff){
+    const sectionRP= document.getElementById('rpData')
+    sectionRP.innerHTML += `
+    <article class="rpSpecific">
+            <div class="rpInfo">
+                <p>${routeStaff.staff.run} - ${routeStaff.staff.fName} ${routeStaff.staff.sName} ${routeStaff.staff.lastName} ${routeStaff.staff.sLastName}</p>
+                <p>Alumnos: ${routeStaff.childrenQ} | Recorrido: ${routeStaff.route.name}</p>
             </div>
-            <div class="routeAction">
+            <div class="rpAction">
+                <p>ID: ${routeStaff.id}
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
             </div>
-        </article>`
+        </article>
+        `
 }
 
-function cleanFormRoute(){
-    const form = document.getElementById('formRoute')
+function cleanFormRP(){
+    const form = document.getElementById('formSelectRoute')
     form.reset()
 }
 
 function saveDataLocalStorage(){
-    //deja en localStorage el array tareas como string
-    localStorage.setItem('routes', JSON.stringify(routes))
+    localStorage.setItem('routePeople', JSON.stringify(routePeople))
 }
 
 function readDataLocalStorage(){
     
-    if(localStorage.getItem('routes')!==null){
+    if(localStorage.getItem('routePeople')!==null){
         
-        const routesRead=JSON.parse(localStorage.getItem('routes'))
-        routesRead.forEach((element) => {
-            createRowRoute(element)
-            routes.push(element)
-            
+        const rpRead=JSON.parse(localStorage.getItem('routePeople'))
+        rpRead.forEach((element) => {
+            createRowRP(element)
+            routePeople.push(element)
+            idAux=element.id
         })
     
     }    

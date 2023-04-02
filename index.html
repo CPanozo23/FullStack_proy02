@@ -25,38 +25,37 @@
                 <div>
                 <label class="label" for="staff"><span id="lbStaff"></span>Seleccione a personal</label>
             
-                <select name="staff" id="staff">
+                <select name="staff" id="staffSelect">
                     <option value="0">Seleccione</option>
-                    <option value="1">Persona 1</option>
-                    <option value="2">Persona 2</option>
-                    <option value="3">Persona 3</option>
                 </select>
+
+                
             </div>
             <div>
                 <!-- INDICAR SI ASISTE CON HIJOS -->
-                <label class="label" for="childen"><span id="lbChildren"></span>¿Incluye alumnos?</label>
-                    <input type="radio" name="children" value="sí"> Sí
-                    <input type="radio" name="children" value="no" checked> No
+                <label class="label" for="children"><span id="lbChildren"></span>¿Incluye alumnos?</label>
+                    <input type="radio" name="children" value="sí" id="childrenS"> Sí
+                    <input type="radio" name="children" value="no" id="childrenN" checked> No
                 &nbsp;&nbsp;&nbsp;&nbsp; <!--MEJORAR-->
                 <label class="label" for="childenQ"><span id="lbChildrenQ"></span>Cantidad</label>
-                <input type="number" name="childenQ" id="childenQ" value="0" disabled>
+                <input type="number" name="childenQ" id="childrenQ" value="0" disabled>
                 <!-- SELECCIONAR RUTA -->
             </div>
             <div>
                 <label class="label" for="route"><span id="lbRoute"></span>Recorrido</label>
                 <select name="route" id="routeSelect">
-                    <option value="">Seleccione</option>
-                    
+                    <option value="0">Seleccione</option>    
                 </select>
             </div>
             
                 <!-- EVIDENCIAR SI HAY CUPO EN EL BUS AL SELECCIONAR RECORRIDO-->
                 <div id="information"></div>
-                <button type="submit" id="add">Agregar</button>
+                <button type="submit" id="addRP">Agregar</button>
             </form>
         </section>
-        <section class="Datos"></section>
+        <h2>Recorridos asignados</h2>
+        <section class="rpData" id="rpData"></section>
     </main>
-    <script src="./assets/js/main2.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
