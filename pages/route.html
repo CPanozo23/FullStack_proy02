@@ -24,7 +24,7 @@
                 <!--nombre ruta, capacidad asientos, asignar paradas-->
                 <div>
                 <label class="label" for="route"><span id="lbRoute"></span>Nombre ruta</label>
-                <input type="text" name="route" id="route">
+                <input type="text" name="routeName" id="routeName">
             </div>
             <div>
                 <label class="label" for="seat"><span id="lbSeat"></span>Asientos</label>
@@ -76,11 +76,13 @@
                 <input type="text" name="busStop10" id="busStop10">
             </div>
             
-                <div id="information"></div>
-                <button type="submit" id="add">Agregar</button>
+                <div id="routeInformation"></div>
+                <button type="submit" id="addRoute">Agregar</button>
             </form>
         </section>
-        <section class="Datos"></section>
+        <h2>Rutas</h2>
+        <section class="routeData" id="routeData"></section>
     </main>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

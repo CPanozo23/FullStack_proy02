@@ -30,3 +30,18 @@ h2{text-align: center;}
     color:blue;
     
 }
+
+.routeSpecific{
+    display:flex;
+    background-color: aqua;
+    padding: 0em 1em;
+}
+.routeSpecific div{
+    background-color: bisque;
+    border:1px solid blue;
+    padding: 0.5em 1em;
+}
+
+.routeInfo{flex:6}
+.routeInfo span {font-weight: bolder;}
+.routeAction{flex:1}
