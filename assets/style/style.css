@@ -1,48 +1,344 @@
 body{
     margin:0 auto;
     padding:0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13pt;
 }
 
-header{ background-color: orange;}
+h2{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    text-align: center;
+    font-size: 36pt;
+}
+
+
+/**************** [2] HEADER - NAV ****************/
+header{
+    background-color: darkblue;
+    padding: 0px 1em;
+    height: 70px;
+    
+}
+header h1{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    color:white;
+    margin-top:0;
+
+}
 
 header nav{
+    height: 70px;
+    width: 100%;
+}
+.linkHome{
+    position: absolute;
+    padding: 1em;
+    margin:0;
+}
+
+header nav ul{
+    float: right;
+    margin: 0em;
+}
+header nav ul li{
+    display: inline-block;
+    line-height:calc(2);
+    margin: 1em 0;
+}
+header nav a{text-decoration: none;}
+header nav ul li a{
     color: white;
-    padding:1em;
+    font-size: 18px;
+    padding: 1.3em 2em;    
 }
-
-header nav a{
-    color: white
+header nav ul li a.active, header nav ul li a:hover{
+    background:black;
+    color:white;
+    transition: 1s;
 }
+.checkbtn{
+    float: right;
+    margin-right: 1em;
+    margin-top:1em;
+    cursor: pointer;
+    display: none;
+}
+#check{display: none;}
+.imgMenu{width: 35px;}
 
+@media (max-width:1150px) {
+    header{padding: 0px;}
+    header nav ul li a{ padding: 1.4em 1em;}
+    
+}
+@media (max-width: 858px){
+    .checkbtn{display: block;}
+    header nav ul{
+        position: fixed;
+        width: 50%;
+        height: auto;
+        background: darkblue;
+        top: 70px;
+        left: -100%;
+        text-align: center;
+    }
+    header{
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        top: 0px;
+    }
+    main{
+        margin-top:70px;
+    }
+
+    header nav ul li{
+        display: block;
+        margin:0;     
+        padding:0;
+    }
+    header nav ul li a{
+        display: block;
+        padding: 1em;    
+    }
+
+    header nav ul li a:hover{
+        background: black;
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+}
+/**********************************************************/
 h2{text-align: center;}
 .forms{
-    border:1px solid grey;
-    max-width: 800px;
-    margin:auto
+    
+    
 }
 
-#formSelectRoute div, #formRoute div, #formStaff div{
+/*#formSelectRoute div, #formRoute div{
     display: flex;
+    margin:1em 0
+}*/
+#formStaff div, #formRoute div{
     margin:1em 0
 }
 
-#formSelectRoute div .label, #formRoute div .label, #formStaff div .label{
-    color:blue;
+#formStaff, #formRoute{
+    color:darkblue;
+    background-color: #ebfbff;
+    width: 800px;
+    margin:auto;
+    padding:0.5em;
+}
+
+.run{
+    width: 50%;
+    display: flex;
+}
+
+.frm2element{
+    display: flex;
+}
+
+.frm2element div{
+    border:0px solid green;
+    width: 100%;
+    display: flex;
+}
+#formStaff label, #formRoute label{
+    line-height:calc(2);
+
+}
+.frm2element div input, .frm2element div label, .run input, .run label{
+    border:0px blue solid;
+    flex:1;
     
+    
+}
+
+.frm2element div input, .run input{
+    border:1px solid darkblue;
+    margin-right: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 10pt;
+    background-color: white;
+}
+
+.frm2element div input:focus{
+    background-color: white;
+}
+#formStaff button, #formRoute button{
+    background-color:#8de5fb;
+    padding: 0.5em 2em;
+    border-radius: 1em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 14pt;
+    color:black;
+    cursor: pointer;
+    transition-duration: 1s;
+    transform: scale(0.9);   
+}
+
+#staffInformation{
+    margin-bottom: 2em;
+    color:red
+}
+
+#formStaff button:hover, #formRoute button:hover{
+    transform: scale(1);
 }
 
 .routeSpecific, .staffSpecific, .rpSpecific{
     display:flex;
-    padding: 0em;
+    padding: 0.5em;
+
+    color:darkblue;
+    background-color: #ebfbff;
     width: 800px;
-    margin:0 auto
+    margin:auto;
+    border-bottom: 1px solid blue;
+
 }
+
+.routeSpecific:last-child, .staffSpecific:last-child, .rpSpecific:last-child{
+    border: none;
+}
+
 .routeSpecific div, .staffSpecific div, .rpSpecific div{
-    background-color: bisque;
+    /*background-color: bisque;
     border:1px solid blue;
-    padding: 0.5em 1em;
+    padding: 0.5em 1em;*/
+
 }
+
+.staffSpecific div p:first-child, .rpSpecific div p:first-child{
+    font-weight: bolder;
+}
+
+.idHidden{
+    visibility: hidden;
+}
+
+.staffAction button, .routeAction button, .rpAction button, .blockdisabled{
+    margin-top:0.2em;
+    padding: 0.5em 2em;
+    border-radius: 1em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 14pt;
+    width: 175px;
+    transition-duration: 1s;
+}
+.staffAction .edit, .routeAction .edit, .rpAction .edit{
+    background-color:green;
+    color:white;
+    cursor: pointer;
+    transform: scale(0.9); 
+}
+.staffAction .edit:hover, .routeAction .edit:hover, .rpAction .edit:hover{
+    transform: scale(1);
+    background-color:darkgreen;
+    color:white
+}
+
+.staffAction .block, .routeAction .delete, .rpAction .delete{
+    background-color:red;
+    color:white;
+    cursor: pointer;
+    transform: scale(0.9);
+}
+.staffAction .block:hover, .routeAction .delete:hover, .rpAction .delete:hover{
+    transform: scale(1);
+    background-color:darkred;
+    color:white;
+}
+
+
 
 .routeInfo, .staffInfo, .rpInfo{flex:6}
 .routeInfo span {font-weight: bolder;}
 .routeAction, .staffAction, .rpAction{flex:1}
+
+
+
+/************** FOOTER ********************/
+footer{
+    background-color: darkblue;
+    margin-top:1em;
+    color:white;
+    text-align: center;
+    padding:0.5em;
+    font-weight: bold;
+}
+
+
+/********* DIV GRID ****************/
+.divGrid2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border:1px solid blue;
+    align-items: center;
+    gap:0px;
+    margin-bottom: 1em;
+}
+
+.divGrid2 div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.divGrid2 div{background-color: none; border:0px solid grey}
+
+.divGrid2:first-child{
+    background-color: red;
+}
+
+.divGrid2 div input, .run input{
+    border:1px solid darkblue;
+    margin-right: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 10pt;
+    background-color: white;
+    width: 100%;
+}
+
+.divGrid2 div input:focus{
+    background-color: white;
+}
+
+#formRoute .frm2element div label{
+    flex:1;
+}
+#formRoute .frm2element div input{
+    flex:2;
+}
+
+.Desbloquear{
+    background: #ccc;
+    color:grey;
+}
+.editdisabled{
+    background-color:rgb(92, 92, 92);
+    color:white;
+    cursor: auto;
+    transform: scale(0.9); 
+    
+}
+
+.blockdisabled{
+    background-color:green;
+    color:white;
+    cursor: auto;
+    transform: scale(0.9); 
+    
+
+}
+
+.blockdisabled:hover{
+    background-color:darkgreen;
+    color:white;
+    cursor: auto;
+    transform: scale(1); 
+    
+}

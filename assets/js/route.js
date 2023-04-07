@@ -53,7 +53,7 @@ function createRowRoute(ruta){
                 
             </div>
             <div class="routeAction">
-                <p>ID: ${ruta.id}
+                <!--<p class="idHidden">ID: ${ruta.id}</p>-->
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
             </div>

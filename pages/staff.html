@@ -6,35 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panozo - Rutas</title>
     <link href="../assets/style/style.css" rel="stylesheet" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=M+PLUS+Rounded+1c:wght@700&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Panozo</h1> |
-            <a href="../index.html">HOME</a> |
-            <a href="./route.html">RUTAS</a> |
-            <a href="./staff.html">PERSONAL</a>
-        </nav>
-        
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                    <img src="../assets/images/menu-icon.png"  class="imgMenu">           
+            </label>
+            <a href="../index.html" class="linkHome">
+                <h1>Panozo</h1>
+            </a>
+            <ul>
+                <li><a href="../index.html">INICIO</a></li>
+                <li><a href="./route.html">RUTAS</a></li>
+                <li><a href="./staff.html">PERSONAL</a></li>
+            </ul>
+        </nav>       
     </header>
     <main>
         <h2>Administrador de Personal</h2>
         <section class="forms">
+            
             <form id="formStaff">
-                <div>
+                <h3>Datos</h3>
+                <div class="run">
                 <label class="label" for="run"><span id="lbRun"></span>RUN</label>
                 <input type="text" name="run" id="run">
+                <input type="text" name="id" id="id" value="0" disabled>
                 </div>
-                <div>
-                <label class="label" for="fName"><span id="lbFName"></span>Primer nombre</label>
-                <input type="text" name="fName" id="fName">
-            </div>
-            <div>
-                <label class="label" for="SName"><span id="lbSName"></span>Segundo nombre</label>
-                <input type="text" name="sName" id="sName">
-            </div>
-            <div>
+                <div class="frm2element">
+                    <div>
+                    <label class="label" for="fName"><span id="lbFName"></span>Primer nombre</label>
+                    <input type="text" name="fName" id="fName">
+                    </div>
+                    <div>
+                    <label class="label" for="SName"><span id="lbSName"></span>Segundo nombre</label>
+                    <input type="text" name="sName" id="sName">
+                </div>
 
+        </div>
+        <div class="frm2element">
+                <div>
                 <label class="label" for="fLastName"><span id="lbFlastName"></span>Primer apellido</label>
                 <input type="text" name="fLastName" id="fLastName">
             </div>
@@ -42,6 +58,8 @@
                 <label class="label" for="mLastName"><span id="lbMlastName"></span>Segundo apellido</label>
                 <input type="text" name="mLastName" id="mLastName">
             </div>
+        </div>
+        <div class="frm2element">
             <div>
                 <label class="label" for="phone"><span id="lbPhone"></span>WhatsApp (+56 9)</label>
                 <input type="phone" name="phone" id="phone">
@@ -50,7 +68,9 @@
                 <label class="label" for="email"><span id="lbEmail"></span>Correo</label>
                 <input type="email" name="email" id="email">
             </div>
+            </div>
                 <h3>Dirección</h3>
+                <div class="frm2element">
                 <div>
                 <label class="label" for="street"><span id="lbStreet"></span>Calle</label>
                 <input type="text" name="street" id="street">
@@ -59,15 +79,19 @@
                 <label class="label" for="stNumber"><span id="lbStNumber"></span>Número</label>
                 <input type="number" name="number" id="number">
             </div>
+            </div>
         </div>
                 <div id="staffInformation"></div>
-                <button type="submit" id="addStaff">Agregar</button>
+                <button type="submit" id="btnStaff">Agregar</button>
             </form>
         </section>
         <h2>Personal</h2>
         <section class="staffData" id="staffData"></section>
         
     </main>
+    <footer>
+        <p>&copy; cPanozo</p>
+    </footer>
     <script src="../assets/js/staff.js"></script>
 </body>
 </html>

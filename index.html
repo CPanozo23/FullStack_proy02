@@ -6,16 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panozo - Asignación Recorridos</title>
     <link href="./assets/style/style.css" rel="stylesheet" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=M+PLUS+Rounded+1c:wght@700&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Panozo</h1> |
-            <a href="#">HOME</a> |
-            <a href="./pages/route.html">RUTAS</a> |
-            <a href="./pages/staff.html">PERSONAL</a>
-        </nav>
-        
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                    <img src="./assets/images/menu-icon.png"  class="imgMenu">           
+            </label>
+            <a href="index.html" class="linkHome">
+                <h1>Panozo</h1>
+            </a>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="./pages/route.html">RUTAS</a></li>
+                <li><a href="./pages/staff.html">PERSONAL</a></li>
+            </ul>
+        </nav>       
     </header>
     <main>
         <h2>Administrador de Asignación de Recorridos</h2>
@@ -28,8 +38,6 @@
                 <select name="staff" id="staffSelect">
                     <option value="0">Seleccione</option>
                 </select>
-
-                
             </div>
             <div>
                 <!-- INDICAR SI ASISTE CON HIJOS -->

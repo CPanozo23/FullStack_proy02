@@ -20,10 +20,12 @@ function readDataLSstaff(){
         const peopleRead=JSON.parse(localStorage.getItem('people'))
         const sectionPeople= document.getElementById('staffSelect')
         peopleRead.forEach((element) => {
+            if(element.state===true){
             people.push(element)           
             sectionPeople.innerHTML += `
                 <option value="${element.id}">${element.fName} ${element.lastName} ${element.sLastName}</option>
                 `
+            }
         })
     }
 }
@@ -104,7 +106,7 @@ function createRowRP(routeStaff){
                 <p>Alumnos: ${routeStaff.childrenQ} | Recorrido: ${routeStaff.route.name}</p>
             </div>
             <div class="rpAction">
-                <p>ID: ${routeStaff.id}
+                <!--<p class="idHidden">ID: ${routeStaff.id}<p>-->
                 <button class="edit">Editar</button>
                 <button class="delete">Eliminar</button>
             </div>

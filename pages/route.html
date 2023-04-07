@@ -6,35 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panozo - Buses</title>
     <link href="../assets/style/style.css" rel="stylesheet" type="text/css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=M+PLUS+Rounded+1c:wght@700&display=swap"
+    rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Panozo</h1> |
-            <a href="../index.html">HOME</a> |
-            <a href="./route.html">RUTAS</a> |
-            <a href="./staff.html">PERSONAL</a>
-        </nav>
-        
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                    <img src="../assets/images/menu-icon.png"  class="imgMenu">           
+            </label>
+            <a href="../index.html" class="linkHome">
+                <h1>Panozo</h1>
+            </a>
+            <ul>
+                <li><a href="../index.html">INICIO</a></li>
+                <li><a href="./route.html">RUTAS</a></li>
+                <li><a href="./staff.html">PERSONAL</a></li>
+            </ul>
+        </nav>       
     </header>
     <main>
         <h2>Administrador de Rutas</h2>
         <section class="forms">
-            <form id="formRoute">
+            <div id="formRoute">
                 <!--nombre ruta, capacidad asientos, asignar paradas-->
+                <div class="frm2element">    
                 <div>
                 <label class="label" for="route"><span id="lbRoute"></span>Nombre ruta</label>
                 <input type="text" name="routeName" id="routeName">
             </div>
+        
             <div>
                 <label class="label" for="seat"><span id="lbSeat"></span>Asientos</label>
                 <input type="number" name="seat" id="seat">
             </div>
-            
+        </div>
                 <h3>Paradas</h3>
                 <p>Ingrese las paradas del bus en el orden que se realizarán</p>
                 <!-- Con JS se podría modificar el html según se indique cuántas paradras tendrá, por defecto serán 10-->
-            
+            <div class="frm2element">
             <div>
                 <label class="label" for="busStop1"><span id="lbBusStop1"></span>Parada n°1</label>
                 <input type="text" name="busStop1" id="busStop1">
@@ -43,6 +55,8 @@
                 <label class="label" for="busStop2"><span id="lbBusStop2"></span>Parada n°2</label>
                 <input type="text" name="busStop2" id="busStop2">
             </div>
+            </div>
+            <div class="frm2element">
             <div>
                 <label class="label" for="busStop3"><span id="lbBusStop3"></span>Parada n°3</label>
                 <input type="text" name="busStop3" id="busStop3">
@@ -51,6 +65,8 @@
                 <label class="label" for="busStop4"><span id="lbBusStop4"></span>Parada n°4</label>
                 <input type="text" name="busStop4" id="busStop4">
             </div>
+        </div>
+            <div class="frm2element">
             <div>
                 <label class="label" for="busStop5"><span id="lbBusStop5"></span>Parada n°5</label>
                 <input type="text" name="busStop5" id="busStop5">
@@ -59,6 +75,8 @@
                 <label class="label" for="busStop6"><span id="lbBusStop6"></span>Parada n°6</label>
                 <input type="text" name="busStop6" id="busStop6">
             </div>
+            </div>
+            <div class="frm2element">
             <div>
                 <label class="label" for="busStop7"><span id="lbBusStop7"></span>Parada n°7</label>
                 <input type="text" name="busStop7" id="busStop7">
@@ -67,15 +85,18 @@
                 <label class="label" for="busStop8"><span id="lbBusStop8"></span>Parada n°8</label>
                 <input type="text" name="busStop8" id="busStop8">
             </div>
+            </div>
+            <div class="frm2element">
             <div>
                 <label class="label" for="busStop9"><span id="lbBusStop9"></span>Parada n°9</label>
                 <input type="text" name="busStop9" id="busStop9">
             </div>
+            
             <div>
                 <label class="label" for="busStop10"><span id="lbBusStop10"></span>Parada n°10</label>
                 <input type="text" name="busStop10" id="busStop10">
             </div>
-            
+            </div>
                 <div id="routeInformation"></div>
                 <button type="submit" id="addRoute">Agregar</button>
             </form>
