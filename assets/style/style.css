@@ -181,7 +181,7 @@ h2{text-align: center;}
     transform: scale(0.9);   
 }
 
-#staffInformation{
+#staffInformation, #routeInformation{
     margin-bottom: 2em;
     color:red
 }

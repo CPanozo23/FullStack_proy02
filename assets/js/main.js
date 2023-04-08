@@ -137,5 +137,16 @@ function readDataLocalStorage(){
     }    
 }
 
-readDataLocalStorage()
+
+/*****************[1] FORM BUTTON ******************/
+/*****************[1.1] FORM BUTTON: ADD ******************/
+/*****************[1.2] FORM BUTTON: UPDATE ******************/
+/*****************[1.3] FORM BUTTON: GENERAL FUNCTION ******************/
+/*COUNT OF PERSON IN BUS
+/*****************[2] LIST ACTION ******************/
+/*****************[2-1] LIST ACTION: DELETE ******************/
+//UPDATE hasRoute of staff
+/*****************[2-2] LIST ACTION: UPDATE ******************/
+/*****************[3-1] LOADED ******************/
+document.addEventListener('DOMContentLoaded', readDataLocalStorage())
 

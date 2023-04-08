@@ -2,7 +2,6 @@
 const people = []
 let idAux = 0
 
-const addStaffBtn = document.getElementById('addStaff')
 const sectionStaff = document.getElementById('staffData')
 
 /*****************[1] FORM BUTTON ******************/
@@ -12,9 +11,7 @@ function optionStaff(event) {
     event.preventDefault()
     //OPTION TO ADD OR UPDATE DEPENDS ON ID
     let id = parseInt(document.getElementById("id").value)
-    //console.log(event.target.value)
-    console.log(id)
-    console.log(typeof (id))
+
     if (event.target.innerHTML === "Agregar" && id === 0) {
         console.log("Agregar")
         addStaff()
@@ -46,13 +43,13 @@ function updateStaff() {
         let staff = createStaff(dataForms(),parseInt(dataForms()[9].value))
         const position = people.findIndex((element) => element.id === staff.id)
         people[position] = staff
-        cleanFormStaff()
         const sectionStaff = document.getElementById('staffData')
         sectionStaff.innerHTML = ''
         localStorage.removeItem('people')
         saveDataLocalStorage()
         readDataLocalStorage()
-    }
+        cleanFormStaff()
+    }  
 }
 
 /*****************[1.3] FORM BUTTON: GENERAL FUNCTION ******************/
@@ -73,6 +70,7 @@ function dataForms() { //GET ELEMENT BY FORM
 function readFormStaff(event) {
 
     let noEmpty = isNotEmpty()
+    //alert(noEmpty)
     if (noEmpty === true) {
         idAux++
         return createStaff(dataForms(), idAux)
@@ -80,14 +78,19 @@ function readFormStaff(event) {
 }
 
 function isNotEmpty(){
+    let empty=true
+    document.getElementById('staffInformation').innerHTML=""
     dataForms().forEach((element) => {
-        if (element.value === '') { return false }
-    })   
-    return true    
+        if (element.value === '') {
+            document.getElementById('staffInformation').innerHTML="*Faltan datos"
+            empty= false
+        }
+    }) 
+    return empty    
 }
 
 function createStaff(inputsForm, id) {//CREATE OBJECT
-    console.log(inputsForm)
+
     const staff = {
         id: id,
         run: inputsForm[0].value,
@@ -134,6 +137,8 @@ function createRowStaff(staff) { //CREATE ROW
 
 function cleanFormStaff() {
     const form = document.getElementById('formStaff')
+    document.getElementById('staffInformation').innerHTML=""
+    document.getElementById('btnStaff').innerHTML="Agregar"
     form.reset()
 }
 
@@ -186,9 +191,10 @@ function blockStaff(idSearch) {
     localStorage.removeItem('people')
     saveDataLocalStorage()
     readDataLocalStorage()
+    cleanFormStaff()
 }
 
-/*****************[2-1] LIST ACTION: LOAD DATA IN FORM ******************/
+/*****************[2-2] LIST ACTION: LOAD DATA IN FORM ******************/
 function editStaff(idSearch){
 
     const staff = people.find((element) => element.id === parseInt(idSearch))

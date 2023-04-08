@@ -30,7 +30,9 @@
     <main>
         <h2>Administrador de Rutas</h2>
         <section class="forms">
-            <div id="formRoute">
+            <form id="formRoute">
+                <input type="text" name="id" id="id" value="0" disabled hidden>
+
                 <!--nombre ruta, capacidad asientos, asignar paradas-->
                 <div class="frm2element">    
                 <div>
@@ -40,7 +42,7 @@
         
             <div>
                 <label class="label" for="seat"><span id="lbSeat"></span>Asientos</label>
-                <input type="number" name="seat" id="seat">
+                <input type="number" name="seat" id="seat" min="1" max="100">
             </div>
         </div>
                 <h3>Paradas</h3>
@@ -98,7 +100,7 @@
             </div>
             </div>
                 <div id="routeInformation"></div>
-                <button type="submit" id="addRoute">Agregar</button>
+                <button type="submit" id="btnRoute">Agregar</button>
             </form>
         </section>
         <h2>Rutas</h2>
