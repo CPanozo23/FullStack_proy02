@@ -66,9 +66,10 @@ header nav ul li a.active, header nav ul li a:hover{
 #check{display: none;}
 .imgMenu{width: 35px;}
 
+
 @media (max-width:1150px) {
     header{padding: 0px;}
-    header nav ul li a{ padding: 1.4em 1em;}
+    header nav ul li a{ padding: 1.2em 1em;}
     
 }
 @media (max-width: 858px){
@@ -90,6 +91,7 @@ header nav ul li a.active, header nav ul li a:hover{
     }
     main{
         margin-top:70px;
+        background: white;
     }
 
     header nav ul li{
@@ -99,32 +101,25 @@ header nav ul li a.active, header nav ul li a:hover{
     }
     header nav ul li a{
         display: block;
-        padding: 1em;    
+        padding: 1em; 
+  
     }
 
     header nav ul li a:hover{
         background: black;
     }
     #check:checked ~ ul{
-        left:0;
+        left:-40px;
     }
 }
 /**********************************************************/
 h2{text-align: center;}
-.forms{
-    
-    
-}
 
-/*#formSelectRoute div, #formRoute div{
-    display: flex;
-    margin:1em 0
-}*/
-#formStaff div, #formRoute div{
+#formStaff div, #formRoute div, #formSelectRP div{
     margin:1em 0
 }
 
-#formStaff, #formRoute{
+#formStaff, #formRoute, #formSelectRP{
     color:darkblue;
     background-color: #ebfbff;
     width: 800px;
@@ -136,28 +131,26 @@ h2{text-align: center;}
     width: 50%;
     display: flex;
 }
+#formStaff label, #formRoute label, #formSelectRP label{
+    line-height:calc(2);
+}
 
 .frm2element{
     display: flex;
 }
 
-.frm2element div{
+.frm2element div, .frm2element2 div{
     border:0px solid green;
     width: 100%;
     display: flex;
 }
-#formStaff label, #formRoute label{
-    line-height:calc(2);
 
-}
 .frm2element div input, .frm2element div label, .run input, .run label{
     border:0px blue solid;
-    flex:1;
-    
-    
+    flex:1;   
 }
 
-.frm2element div input, .run input{
+.frm2element div input, .run input, .frm2element div select{
     border:1px solid darkblue;
     margin-right: 1em;
     padding: 0.5em;
@@ -169,7 +162,14 @@ h2{text-align: center;}
 .frm2element div input:focus{
     background-color: white;
 }
-#formStaff button, #formRoute button{
+
+#formRoute .frm2element div label, #formSelectRP .frm2element div label{
+    flex:1;
+}
+#formRoute .frm2element div input, #formSelectRP .frm2element div select{
+    flex:2;
+}
+#formStaff button, #formRoute button, #formSelectRP button{
     background-color:#8de5fb;
     padding: 0.5em 2em;
     border-radius: 1em;
@@ -181,45 +181,35 @@ h2{text-align: center;}
     transform: scale(0.9);   
 }
 
-#staffInformation, #routeInformation{
+#staffInformation, #routeInformation, #rpInformation{
     margin-bottom: 2em;
     color:red
 }
 
-#formStaff button:hover, #formRoute button:hover{
+#formStaff button:hover, #formRoute button:hover, #formSelectRP button:hover{
     transform: scale(1);
 }
+
+
 
 .routeSpecific, .staffSpecific, .rpSpecific{
     display:flex;
     padding: 0.5em;
-
     color:darkblue;
     background-color: #ebfbff;
     width: 800px;
     margin:auto;
     border-bottom: 1px solid blue;
-
 }
 
 .routeSpecific:last-child, .staffSpecific:last-child, .rpSpecific:last-child{
     border: none;
 }
 
-.routeSpecific div, .staffSpecific div, .rpSpecific div{
-    /*background-color: bisque;
-    border:1px solid blue;
-    padding: 0.5em 1em;*/
-
-}
-
 .staffSpecific div p:first-child, .rpSpecific div p:first-child{
     font-weight: bolder;
 }
 
-.idHidden{
-    visibility: hidden;
-}
 
 .staffAction button, .routeAction button, .rpAction button, .blockdisabled{
     margin-top:0.2em;
@@ -273,46 +263,9 @@ footer{
 }
 
 
-/********* DIV GRID ****************/
-.divGrid2{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border:1px solid blue;
-    align-items: center;
-    gap:0px;
-    margin-bottom: 1em;
-}
 
-.divGrid2 div{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.divGrid2 div{background-color: none; border:0px solid grey}
 
-.divGrid2:first-child{
-    background-color: red;
-}
 
-.divGrid2 div input, .run input{
-    border:1px solid darkblue;
-    margin-right: 1em;
-    padding: 0.5em;
-    border-radius: 0.5em;
-    font-size: 10pt;
-    background-color: white;
-    width: 100%;
-}
-
-.divGrid2 div input:focus{
-    background-color: white;
-}
-
-#formRoute .frm2element div label{
-    flex:1;
-}
-#formRoute .frm2element div input{
-    flex:2;
-}
 
 .Desbloquear{
     background: #ccc;
@@ -341,4 +294,91 @@ footer{
     cursor: auto;
     transform: scale(1); 
     
+}
+
+#formSelectRP label{background: #000;}
+
+
+/*
+.frm2element2{
+    display: flex;
+}
+
+.frm2element2 label, .frm2element2 div{
+    display: flex;
+}
+.frm2element2 #lbChildren{color: red; flex:2; width: 300px; background-color: #8de5fb;}
+.inputRadio{flex:1; color:green; margin-right: 200px;}
+#childrenQ{}
+*/
+
+.frm2element2{ display: flex;padding:0; margin:0; line-height:calc(2);}
+.frm2element2div{display: flex; line-height:calc(2); padding:0; margin:0; }
+.frm2element2div label{flex:2; padding:0; margin:0; line-height:calc(2);}
+.inputRadio{flex:1}
+#lbChildren{color:green; padding:0; margin:0;}
+
+@media (max-width: 858px){
+
+    #formStaff, #formRoute, #formSelectRP{
+        width: auto;
+        margin:auto;
+        padding:0.5em;
+    }
+    .run input{
+        flex:2
+    }
+
+    .frm2element{
+
+    }
+    .frm2element div{
+        display: block;
+
+    }
+
+    .frm2element div label, .frm2element div input{
+
+        display: block;
+        width: 90%;
+    }
+
+    .routeSpecific, .staffSpecific, .rpSpecific{
+        width: auto;
+        margin:auto;
+        padding:0.5em;
+    }
+    
+
+
+    .frm2element div input, .run input, .frm2element div select{
+        padding: 0.8em 0.5em;
+
+    }
+
+    .routeSpecific{
+        display: block;
+    }
+
+}
+@media (max-width: 750px){
+    
+
+    .staffInfo p span, .rpInfo p span{
+        display: block;
+    }
+}
+
+@media (max-width: 500px){
+
+    .frm2element, .run, .rpSpecific{
+
+        display: block;
+    }
+    .frm2element div label, .frm2element div input, .run label, .run input{
+
+        width: 90vw;
+    }
+
+    .staffSpecific{display: block;}
 }

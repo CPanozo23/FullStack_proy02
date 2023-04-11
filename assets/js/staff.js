@@ -124,8 +124,8 @@ function createRowStaff(staff) { //CREATE ROW
     sectionStaff.innerHTML += `
     <article class='staffSpecific ${stateText}'>
     <div class="staffInfo">
-        <p>${staff.run} - ${staff.fName} ${staff.sName} ${staff.lastName} ${staff.sLastName} | ${staff.state} - ${staff.id}</p>
-        <p>WhatsApp: ${staff.whatsapp} - Email: ${staff.email}</p>
+        <p><span>RUN: ${staff.run} </span>${staff.fName} ${staff.sName} ${staff.lastName} ${staff.sLastName}</p>
+        <p><span>WhatsApp: ${staff.whatsapp} </span>Email: ${staff.email}</p>
         <p>Dirección: ${staff.address.street} n°${staff.address.number}</p>
     </div>
     <div class="staffAction">

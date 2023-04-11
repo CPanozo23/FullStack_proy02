@@ -1,3 +1,7 @@
+//[1] FORM BUTTON
+//[1.1]....
+
+
 const routes = []
 let idAux = 0
 const sectionRoutes = document.getElementById('routeData')
@@ -91,7 +95,8 @@ function createRoute(inputsForm, id) {//CREATE OBJECT
     const route = {
         id: id,
         name: inputsForm[0].value,
-        seat: inputsForm[1].value,
+        seat: parseInt(inputsForm[1].value),
+        freeSeat: parseInt(inputsForm[1].value),
         busStop: []
     }
 
@@ -106,7 +111,7 @@ function createRowRoute(route) {
     sectionRoutes.innerHTML += `
         <article class="routeSpecific">
             <div class="routeInfo">
-                <p><span>${route.name}</span> | Asientos: ${route.seat}| ${route.id}</p>
+                <p><span>${route.name}</span> | Asientos: ${route.seat}| Asientos disponibles: ${route.freeSeat} | ${route.id}</p>
                 <h4>Paradas</h4>
                 <p>${route.busStop.join(' | ')}</p>
                 
@@ -166,7 +171,7 @@ function deleteRoute(idSearch) {
     const route = routes.find((element) => element.id === parseInt(idSearch))
     const position = routes.findIndex((element) => element.id === parseInt(idSearch))
 
-    routes.splice(position, 1)
+    routes.splice(position, 1) //eliminar
 
     const sectionRoute = document.getElementById('routeData')
     sectionRoute.innerHTML = ''
@@ -184,6 +189,7 @@ function editRoute(idSearch) {
 
     const inputForms = dataForms()
     inputForms[0].value=route.name
+    //es decir: document.getElementByID("name").value=route.name
     inputForms[1].value=route.seat
     route.busStop[0] !== undefined ? inputForms[2].value=route.busStop[0]: ''
     route.busStop[1] !== undefined ? inputForms[3].value=route.busStop[1]:''
