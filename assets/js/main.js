@@ -196,6 +196,7 @@ function showFreeSeat(event) {
 
 
 /*****************[2] LIST ACTION ******************/
+
 sectionRP.addEventListener('click', (event) => {
     event.preventDefault()
 
@@ -203,7 +204,7 @@ sectionRP.addEventListener('click', (event) => {
 
         deleteRP(event.target.value) //ID
     } else if (event.target.innerHTML === "Editar") {
-        //editRP(event.target.value)
+        editRP(event.target.value)
     } else { console.log('ERROR: BOTONES') }
 
 })
@@ -248,6 +249,33 @@ function deleteRP(idSearch) {
 
 
 /*****************[2.2] LIST ACTION: UPDATE ******************/
+function editRP(idSearch) { 
+    /*SEARCH OBJECT AND POSITION*/
+    //const positionRP = routePeople.findIndex((element) => element.id === parseInt(idSearch))
+    const rp = routePeople.find((element) => element.id === parseInt(idSearch))
+    //mejorar pq estoy cambiandole el estado
+    const staff=searchUpStaff(rp.staff.id)
+    saveDataLS()
+    readDataLS()
+    const inputForms = dataForms()
+    //no lo recarga pq esta con condicion de q no lo muestre si está como hasRote true, se tendria q quitar esta condición
+    routePeople.hasRoute=false
+    inputForms[0].value=rp.staff.id
+    //checked a la opción que corresponda
+    if(parseInt(rp.childrenQ)>0){
+        inputForms[1].checked=true
+        inputForms[2].disabled=false
+        
+    }else{
+        //inputForms[1].checked=false
+        document.getElementById("childrenN").checked=true
+        inputForms[2].disabled=true
+    }
+    //inputForms[1].value=rp.children //('childrenS') 
+    inputForms[2].value=rp.childrenQ //('childrenQ'),
+    inputForms[3].value=rp.route.id //('routeSelect'),
+    inputForms[4].value=rp.id //('childrenS')
+}
 /*****************[3.1] LOADED ******************/
 document.addEventListener('DOMContentLoaded', readDataLS())
 

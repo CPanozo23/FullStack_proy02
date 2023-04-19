@@ -184,7 +184,6 @@ function deleteRoute(idSearch) {
 function editRoute(idSearch) {
     let ids=parseInt(idSearch)
 
-    const position = routes.findIndex((element) => element.id === parseInt(idSearch))
     const route=routes.find((element) => element.id === parseInt(idSearch))
 
     const inputForms = dataForms()

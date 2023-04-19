@@ -115,7 +115,7 @@ header nav ul li a.active, header nav ul li a:hover{
 /**********************************************************/
 h2{text-align: center;}
 
-#formStaff div, #formRoute div, #formSelectRP div{
+#formStaff div, #formRoute div{
     margin:1em 0
 }
 
@@ -179,6 +179,15 @@ h2{text-align: center;}
     cursor: pointer;
     transition-duration: 1s;
     transform: scale(0.9);   
+}
+
+#childrenQ{
+    border:1px solid darkblue;
+    margin-right: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 10pt;
+    margin-left: 1em;
 }
 
 #staffInformation, #routeInformation, #rpInformation{
@@ -254,15 +263,32 @@ h2{text-align: center;}
 
 /************** FOOTER ********************/
 footer{
-    background-color: darkblue;
+    background-color: darkblue;   
     margin-top:1em;
     color:white;
     text-align: center;
     padding:0.5em;
-    font-weight: bold;
 }
 
+footer div{
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+}
 
+footer div p{
+    flex:1;
+    color:white;
+}
+footer div p a{
+    text-decoration: none;
+    margin:0 0.5em;
+    color:white
+}
+
+@media (max-width: 735px){
+    footer div{display: block;}
+}
 
 
 
@@ -296,7 +322,6 @@ footer{
     
 }
 
-#formSelectRP label{background: #000;}
 
 
 /*
@@ -314,9 +339,9 @@ footer{
 
 .frm2element2{ display: flex;padding:0; margin:0; line-height:calc(2);}
 .frm2element2div{display: flex; line-height:calc(2); padding:0; margin:0; }
-.frm2element2div label{flex:2; padding:0; margin:0; line-height:calc(2);}
+.frm2element2div label{flex:1; padding:0; margin:0; line-height:calc(2);}
 .inputRadio{flex:1}
-#lbChildren{color:green; padding:0; margin:0;}
+
 
 @media (max-width: 858px){
 

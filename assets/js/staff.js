@@ -198,7 +198,6 @@ function blockStaff(idSearch) {
 function editStaff(idSearch){
 
     const staff = people.find((element) => element.id === parseInt(idSearch))
-    const position = people.findIndex((element) => element.id === parseInt(idSearch))
     
     const inputForms = dataForms()
 
