@@ -1,7 +1,3 @@
-//[1] FORM BUTTON
-//[1.1]....
-
-
 const routes = []
 let idAux = 0
 const sectionRoutes = document.getElementById('routeData')
@@ -17,8 +13,6 @@ function optionRoute(event) {
         addRoute()
     } else if (event.target.innerHTML === "Actualizar") {
         updateRoute()
-    } else {
-        console.log("ERROR")
     }
 }
 /*****************[1.1] FORM BUTTON: ADD ******************/
@@ -111,7 +105,7 @@ function createRowRoute(route) {
     sectionRoutes.innerHTML += `
         <article class="routeSpecific">
             <div class="routeInfo">
-                <p><span>${route.name}</span> | Asientos: ${route.seat}| Asientos disponibles: ${route.freeSeat} | ${route.id}</p>
+                <p><span>${route.name}</span> | Asientos: ${route.seat}| Asientos disponibles: ${route.freeSeat}</p>
                 <h4>Paradas</h4>
                 <p>${route.busStop.join(' | ')}</p>
                 
@@ -159,19 +153,19 @@ const readDataLocalStorage = () => {
 sectionRoutes.addEventListener('click', (event) => {
     event.preventDefault()
     if (event.target.innerHTML === "Eliminar") {
-        deleteRoute(event.target.value)
+        deleteRoute(parseInt(event.target.value))
     } else if (event.target.innerHTML === "Editar") {
-        editRoute(event.target.value)
+        editRoute(parseInt(event.target.value))
     } else { console.log('ERROR: BOTONES') }
 
 })
 /*****************[2-1] LIST ACTION: DELETE ******************/
 function deleteRoute(idSearch) {
     /*SEARCH OBJECT AND POSITION*/
-    const route = routes.find((element) => element.id === parseInt(idSearch))
-    const position = routes.findIndex((element) => element.id === parseInt(idSearch))
+    const route = routes.find((element) => element.id === idSearch)
+    const position = routes.findIndex((element) => element.id === idSearch)
 
-    routes.splice(position, 1) //eliminar
+    routes.splice(position, 1)
 
     const sectionRoute = document.getElementById('routeData')
     sectionRoute.innerHTML = ''
@@ -182,13 +176,13 @@ function deleteRoute(idSearch) {
 }
 /*****************[2-2] LIST ACTION: LOAD DATA IN FORM ******************/
 function editRoute(idSearch) {
-    let ids=parseInt(idSearch)
+    let ids=idSearch
 
-    const route=routes.find((element) => element.id === parseInt(idSearch))
+    const route=routes.find((element) => element.id === idSearch)
 
     const inputForms = dataForms()
     inputForms[0].value=route.name
-    //es decir: document.getElementByID("name").value=route.name
+
     inputForms[1].value=route.seat
     route.busStop[0] !== undefined ? inputForms[2].value=route.busStop[0]: ''
     route.busStop[1] !== undefined ? inputForms[3].value=route.busStop[1]:''

@@ -102,7 +102,7 @@ function createStaff(inputsForm, id) {//CREATE OBJECT
         email: inputsForm[6].value,
         address: address = {
             street: inputsForm[7].value,
-            number: inputsForm[8].value
+            number: parseInt(inputsForm[8].value)
         },
         state: true,
         hasRoute: false
@@ -170,17 +170,17 @@ const readDataLocalStorage = () => {
 sectionStaff.addEventListener('click', (event) => {
     event.preventDefault()
     if (event.target.innerHTML === "Desbloquear" || event.target.innerHTML === "Bloquear") {
-        blockStaff(event.target.value)
+        blockStaff(parseInt(event.target.value))
     } else if (event.target.innerHTML === "Editar") {
-        editStaff(event.target.value)
+        editStaff(parseInt(event.target.value))
     } else { console.log('ERROR: BLOCK/UNBLOCK') }
 
 })
 /*****************[2-1] LIST ACTION: BLOCK/UNBLOCK ******************/
 function blockStaff(idSearch) {
     /*SEARCH OBJECT AND POSITION*/
-    const staff = people.find((element) => element.id === parseInt(idSearch))
-    const position = people.findIndex((element) => element.id === parseInt(idSearch))
+    const staff = people.find((element) => element.id === idSearch)
+    const position = people.findIndex((element) => element.id === idSearch)
 
     //ternary IF
     staff.state === true ? staff.state = false : staff.state = true
@@ -197,7 +197,7 @@ function blockStaff(idSearch) {
 /*****************[2-2] LIST ACTION: LOAD DATA IN FORM ******************/
 function editStaff(idSearch){
 
-    const staff = people.find((element) => element.id === parseInt(idSearch))
+    const staff = people.find((element) => element.id === idSearch)
     
     const inputForms = dataForms()
 

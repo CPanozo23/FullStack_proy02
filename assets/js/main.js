@@ -30,17 +30,21 @@ function addRP() {
         saveDataLS()
         readDataLS()
         cleanFormRP()
-        /******************************* */
         
     }
 }
 /*****************[1.2] FORM BUTTON: UPDATE ******************/
-//SÓLO PUEDA CAMBIAR ASIGNACION DE RECORRIDO Y LOS HIJOS
 function updateRP(){
     let noEmpty = isNotEmpty()
-    if (noEmpty === true) {
-        let rp = createRP(dataForms(), parseInt(dataForms()[4].value), "read")
+    console.log(routePeople)
+    let rp = routePeople.find((element) => element.id === parseInt(dataForms()[4].value))
+    console.log(rp)
+
+    let isFreeSeat = isFree("update", rp.childrenQ)
+    console.log(isFreeSeat)
+    if (noEmpty && isFreeSeat[0]===true) {
         
+        let rp = createRP(dataForms(), parseInt(dataForms()[4].value), "read", isFreeSeat[1], isFreeSeat[2])
         const positionRP = routePeople.findIndex((element) => element.id === rp.id)
         
         routePeople[positionRP] = rp
@@ -54,6 +58,7 @@ function updateRP(){
     } 
 }
 /*****************[1.3] FORM BUTTON: GENERAL FUNCTION ******************/
+
 function dataForms() { //GET ELEMENT BY FORM
     const dataInputForms = [document.getElementById('staffSelect'),
     document.getElementById('childrenS'),
@@ -66,11 +71,11 @@ function dataForms() { //GET ELEMENT BY FORM
 
 function readFormRP(event) {
 
-    let noEmpty = isNotEmpty()
-    
-    if (noEmpty === true) {
+    let noEmpty = isNotEmpty("new")
+    let isFreeSeat = isFree("new")
+    if (noEmpty && isFreeSeat[0]===true) {
         idAux++
-        return createRP(dataForms(), idAux, "updateHasRoute")//ADD
+        return createRP(dataForms(), idAux, "updateHasRoute", isFreeSeat[1], "down")//ADD
     }
 }
 
@@ -91,13 +96,50 @@ function isNotEmpty(){
     return empty    
 }
 
+function isFree(option, originQ){
+    let peopleQ=1
+    if(dataForms()[1].checked){
+        peopleQ+=parseInt(dataForms()[2].value)
+    } 
+
+    const route = routes.find((element)=>element.id===parseInt(dataForms()[3].value))
+    switch(option){
+        case "new":
+            if(peopleQ>route.freeSeat){
+                document.getElementById('rpInformation').innerHTML=`No alcanzan los asientos. DISPONIBLES: ${route.freeSeat}`
+                return false
+            }
+            return [true, peopleQ, "down"]
+        break
+        case "update":
+            console.log(originQ)
+
+            let quantity=0
+            if(peopleQ>(originQ+1)){
+                quantity=peopleQ-(originQ+1)
+                if(quantity>route.freeSeat){
+                    document.getElementById('rpInformation').innerHTML+=`No alcanzan los asientos. DISPONIBLES: ${route.freeSeat}`
+                    return false
+                }
+                return [true, quantity, "down"]
+            }else if(peopleQ<(originQ+1)){
+                quantity=(originQ+1)-peopleQ 
+                return [true, quantity, "up"]
+            }else{
+                return [true, quantity, "equal"]
+            }
+            break
+    }
+    
+}
+
 function searchUpStaff(id, option){
-    const staff = people.find((element)=>element.id===parseInt(id))
-    const position = people.findIndex((element)=>element.id===parseInt(id))
+    const staff = people.find((element)=>element.id===id)
+    const position = people.findIndex((element)=>element.id===id)
     switch (option) {
         case "updateHasRoute":
             staff.hasRoute === true ? staff.hasRoute=false : staff.hasRoute=true
-            people[parseInt(position)] = staff
+            people[position] = staff
             //UPDATE PEOPLE
             localStorage.removeItem('people')
             localStorage.setItem('people', JSON.stringify(people))
@@ -109,21 +151,48 @@ function searchUpStaff(id, option){
         default:
             break
     }
-    
-    
+        
 }
 
-function createRP(inputsForm, id, optionStaff) {//CREATE OBJECT
-    const staff = searchUpStaff(inputsForm[0].value, optionStaff)
+function searchUpRoute(id, seats, option){
+    const route = routes.find((element)=>element.id===id)
+    const position = routes.findIndex((element)=>element.id===id)
+    
+    switch (option) {
+        case "down":
+            route.freeSeat-=seats
+            routes[position] = route
+            //UPDATE ROUTE
+            localStorage.removeItem('routes')
+            localStorage.setItem('routes', JSON.stringify(routes))
+            return route
+            break
+        case "up":
+            route.freeSeat+=seats
+            routes[position] = route
+            //UPDATE ROUTE
+            localStorage.removeItem('routes')
+            localStorage.setItem('routes', JSON.stringify(routes))
+            return route
+            break
+        default: //equal
+            return route
+            break
+    }
+        
+}
+
+function createRP(inputsForm, id, optionStaff, seats, optionSeat) {
+    const staff = searchUpStaff(parseInt(inputsForm[0].value), optionStaff)
     dataForms()[1].checked===false ? dataForms()[2].value=0 : ''
 
-    const route = routes.find((element)=>element.id===parseInt(inputsForm[3].value))
+    const route = searchUpRoute(parseInt(inputsForm[3].value), seats, optionSeat)
 
     const rp = {
         id: id,
         staff: staff,
         children: inputsForm[1].checked,
-        childrenQ: inputsForm[2].value,
+        childrenQ: parseInt(inputsForm[2].value),
         route: route
     }
 
@@ -164,9 +233,9 @@ sectionRP.addEventListener('click', (event) => {
 
     if (event.target.innerHTML === "Eliminar") {
 
-        deleteRP(event.target.value) //ID
+        deleteRP(parseInt(event.target.value)) //ID
     } else if (event.target.innerHTML === "Editar") {
-        editRP(event.target.value)
+        editRP(parseInt(event.target.value))
     }
 
 })
@@ -174,12 +243,10 @@ sectionRP.addEventListener('click', (event) => {
 function deleteRP(idSearch) {
     /*SEARCH OBJECT AND POSITION*/
     console.log(idSearch)
-    const positionRP = routePeople.findIndex((element) => element.id === parseInt(idSearch))
+    const positionRP = routePeople.findIndex((element) => element.id === idSearch)
     console.log(positionRP)
-    const rp = routePeople.find((element) => element.id === parseInt(idSearch))
-    console.log(rp)
-    //VERIFICAR DESDE ACÁ
-    //readDataLS()
+    const rp = routePeople.find((element) => element.id === idSearch)
+
 
     //UPDATE PEOPLE
     console.log(people)
@@ -187,6 +254,10 @@ function deleteRP(idSearch) {
     localStorage.removeItem('people')
     localStorage.setItem('people', JSON.stringify(people))
 
+    console.log("Cantidad al eliminar: " + (rp.childrenQ) )
+    const route = searchUpRoute(rp.route.id,(rp.childrenQ+1),"up")
+    localStorage.removeItem('people')
+    localStorage.setItem('people', JSON.stringify(people))
 
     //delete object RP
     routePeople.splice(positionRP, 1)
@@ -201,19 +272,18 @@ function deleteRP(idSearch) {
 }
 /*****************[2.2] LIST ACTION: UPDATE ******************/
 function editRP(idSearch) { 
-    const rp = routePeople.find((element) => element.id === parseInt(idSearch))
+    const rp = routePeople.find((element) => element.id === idSearch)
 
     const sectionPeople= document.getElementById('staffSelect')
     sectionPeople.innerHTML= `<option value="${rp.staff.id}">${rp.staff.run}  ${rp.staff.fName} ${rp.staff.lastName}</option>`
     document.getElementById('staffSelect').disabled=true
     
     inputForms=dataForms()
-    if(parseInt(rp.childrenQ)>0){
+    if(rp.childrenQ>0){
         inputForms[1].checked=true
         inputForms[2].disabled=false
         
     }else{
-        //inputForms[1].checked=false
         document.getElementById("childrenN").checked=true
         inputForms[2].disabled=true
     }
@@ -289,7 +359,7 @@ function readDataLSpeople(){
             if (people.find((el) => el.id === element.id)) {
             } else {
                 people.push(element)
-                if(element.hasRoute === false){
+                if(element.hasRoute === false && element.state === true){
                     sectionPeople.innerHTML += `<option value="${element.id}">${element.run}  ${element.fName} ${element.lastName}</option>`
                 }
             }
