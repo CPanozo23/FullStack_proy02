@@ -33,7 +33,7 @@ function updateRoute() {
     //UPDATE IF ID OF ROUTE EXIST
     let noEmpty = isNotEmpty()
     if (noEmpty === true) {
-        let route = createRoute(dataForms(),parseInt(dataForms()[12].value))
+        let route = createRoute(dataForms(), parseInt(dataForms()[12].value))
         const position = routes.findIndex((element) => element.id === route.id)
         routes[position] = route
         const sectionRoute = document.getElementById('routeData')
@@ -42,7 +42,7 @@ function updateRoute() {
         saveDataLocalStorage()
         readDataLocalStorage()
         cleanFormRoute()
-    }  
+    }
 }
 /*****************[1.3] FORM BUTTON: GENERAL FUNCTION ******************/
 function dataForms() { //GET ELEMENT BY FORM
@@ -176,27 +176,27 @@ function deleteRoute(idSearch) {
 }
 /*****************[2-2] LIST ACTION: LOAD DATA IN FORM ******************/
 function editRoute(idSearch) {
-    let ids=idSearch
+    let ids = idSearch
 
-    const route=routes.find((element) => element.id === idSearch)
+    const route = routes.find((element) => element.id === idSearch)
 
     const inputForms = dataForms()
-    inputForms[0].value=route.name
+    inputForms[0].value = route.name
 
-    inputForms[1].value=route.seat
-    route.busStop[0] !== undefined ? inputForms[2].value=route.busStop[0]: ''
-    route.busStop[1] !== undefined ? inputForms[3].value=route.busStop[1]:''
-    route.busStop[2] !== undefined ? inputForms[4].value=route.busStop[2]:''
-    route.busStop[3] !== undefined ? inputForms[5].value=route.busStop[3]:''
-    route.busStop[4] !== undefined ? inputForms[6].value=route.busStop[4]:''
-    route.busStop[5] !== undefined ? inputForms[7].value=route.busStop[5]:''
-    route.busStop[6] !== undefined ? inputForms[8].value=route.busStop[6]:''
-    route.busStop[7] !== undefined ? inputForms[9].value=route.busStop[7]:''
-    route.busStop[8] !== undefined ? inputForms[10].value=route.busStop[8]:''
-    route.busStop[9] !== undefined ? inputForms[11].value=route.busStop[9]:''
-    inputForms[12].value=route.id 
+    inputForms[1].value = route.seat
+    route.busStop[0] !== undefined ? inputForms[2].value = route.busStop[0] : ''
+    route.busStop[1] !== undefined ? inputForms[3].value = route.busStop[1] : ''
+    route.busStop[2] !== undefined ? inputForms[4].value = route.busStop[2] : ''
+    route.busStop[3] !== undefined ? inputForms[5].value = route.busStop[3] : ''
+    route.busStop[4] !== undefined ? inputForms[6].value = route.busStop[4] : ''
+    route.busStop[5] !== undefined ? inputForms[7].value = route.busStop[5] : ''
+    route.busStop[6] !== undefined ? inputForms[8].value = route.busStop[6] : ''
+    route.busStop[7] !== undefined ? inputForms[9].value = route.busStop[7] : ''
+    route.busStop[8] !== undefined ? inputForms[10].value = route.busStop[8] : ''
+    route.busStop[9] !== undefined ? inputForms[11].value = route.busStop[9] : ''
+    inputForms[12].value = route.id
 
-    document.getElementById('btnRoute').innerHTML="Actualizar"
+    document.getElementById('btnRoute').innerHTML = "Actualizar"
 }
 /*****************[3-1] LOADED ******************/
 document.addEventListener('DOMContentLoaded', readDataLocalStorage())

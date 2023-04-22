@@ -40,7 +40,7 @@ function updateStaff() {
     //UPDATE IF ID OF STAFF EXIST
     let noEmpty = isNotEmpty()
     if (noEmpty === true) {
-        let staff = createStaff(dataForms(),parseInt(dataForms()[9].value))
+        let staff = createStaff(dataForms(), parseInt(dataForms()[9].value))
         const position = people.findIndex((element) => element.id === staff.id)
         people[position] = staff
         const sectionStaff = document.getElementById('staffData')
@@ -49,7 +49,7 @@ function updateStaff() {
         saveDataLocalStorage()
         readDataLocalStorage()
         cleanFormStaff()
-    }  
+    }
 }
 
 /*****************[1.3] FORM BUTTON: GENERAL FUNCTION ******************/
@@ -77,16 +77,16 @@ function readFormStaff(event) {
     }
 }
 
-function isNotEmpty(){
-    let empty=true
-    document.getElementById('staffInformation').innerHTML=""
+function isNotEmpty() {
+    let empty = true
+    document.getElementById('staffInformation').innerHTML = ""
     dataForms().forEach((element) => {
         if (element.value === '') {
-            document.getElementById('staffInformation').innerHTML="*Faltan datos"
-            empty= false
+            document.getElementById('staffInformation').innerHTML = "*Faltan datos"
+            empty = false
         }
-    }) 
-    return empty    
+    })
+    return empty
 }
 
 function createStaff(inputsForm, id) {//CREATE OBJECT
@@ -137,8 +137,8 @@ function createRowStaff(staff) { //CREATE ROW
 
 function cleanFormStaff() {
     const form = document.getElementById('formStaff')
-    document.getElementById('staffInformation').innerHTML=""
-    document.getElementById('btnStaff').innerHTML="Agregar"
+    document.getElementById('staffInformation').innerHTML = ""
+    document.getElementById('btnStaff').innerHTML = "Agregar"
     form.reset()
 }
 
@@ -195,24 +195,24 @@ function blockStaff(idSearch) {
 }
 
 /*****************[2-2] LIST ACTION: LOAD DATA IN FORM ******************/
-function editStaff(idSearch){
+function editStaff(idSearch) {
 
     const staff = people.find((element) => element.id === idSearch)
-    
+
     const inputForms = dataForms()
 
-    inputForms[0].value=staff.run
-    inputForms[1].value=staff.fName
-    inputForms[2].value=staff.sName
-    inputForms[3].value=staff.lastName
-    inputForms[4].value=staff.sLastName
-    inputForms[5].value=staff.whatsapp
-    inputForms[6].value=staff.email
-    inputForms[7].value=staff.address.street
-    inputForms[8].value=staff.address.number
-    inputForms[9].value=staff.id 
+    inputForms[0].value = staff.run
+    inputForms[1].value = staff.fName
+    inputForms[2].value = staff.sName
+    inputForms[3].value = staff.lastName
+    inputForms[4].value = staff.sLastName
+    inputForms[5].value = staff.whatsapp
+    inputForms[6].value = staff.email
+    inputForms[7].value = staff.address.street
+    inputForms[8].value = staff.address.number
+    inputForms[9].value = staff.id
 
-    document.getElementById('btnStaff').innerHTML="Actualizar"
+    document.getElementById('btnStaff').innerHTML = "Actualizar"
 }
 
 /*****************[3-1] LOADED ******************/

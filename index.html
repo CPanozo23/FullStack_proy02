@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,16 @@
     <title>Panozo - Asignación Recorridos</title>
     <link href="./assets/style/style.css" rel="stylesheet" type="text/css">
     <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=M+PLUS+Rounded+1c:wght@700&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=M+PLUS+Rounded+1c:wght@700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header>
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                    <img src="./assets/images/menu-icon.png"  class="imgMenu">           
+                <img src="./assets/images/menu-icon.png" class="imgMenu">
             </label>
             <a href="index.html" class="linkHome">
                 <h1>Panozo</h1>
@@ -25,7 +27,7 @@
                 <li><a href="./pages/route.html">RUTAS</a></li>
                 <li><a href="./pages/staff.html">PERSONAL</a></li>
             </ul>
-        </nav>       
+        </nav>
     </header>
     <main>
         <h2>Administrador de Asignación de Recorridos</h2>
@@ -34,44 +36,40 @@
                 <!-- LISTA DESPLEGABLE DE PERSONAL -->
                 <input type="text" name="id" id="id" value="0" disabled hidden>
                 <div class="frm2element">
-                <div>
-                <label class="label" for="staff"><span id="lbStaff"></span>Personal</label>
-            
-                <select name="staff" id="staffSelect">
-                    <option value="">Seleccione</option>
-                </select>
-            </div>
-            
-            <div>
-                <label class="label" for="route"><span id="lbRoute"></span>Recorrido</label>
-                <select name="route" id="routeSelect"></select>
-                
-            </div>
-        </div>
-        <p>Asientos disponibles: <span id='freeSeat'></span></p>
-       
-         
-            <div class="frm2element2">
-                <!-- INDICAR SI ASISTE CON HIJOS -->
-                <div class="frm2element2div">
-                <label class="label" for="children" id="lbChildren">¿Incluye alumnos?</label>
-                <div class="inputRadio">
+                    <div>
+                        <label class="label" for="staff"><span id="lbStaff"></span>Personal</label>
 
-                    <input type="radio" name="children" value="sí" id="childrenS"> Sí
-                    <input type="radio" name="children" value="no" id="childrenN" checked> No
+                        <select name="staff" id="staffSelect">
+                            <option value="">Seleccione</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="label" for="route"><span id="lbRoute"></span>Recorrido</label>
+                        <select name="route" id="routeSelect"></select>
+
+                    </div>
                 </div>
-            </div>
-                <div>
-                <label class="label" for="childenQ"><span id="lbChildrenQ"></span>Cantidad</label>
-                <input type="number" name="childenQ" id="childrenQ" value="" disabled>
-            </div>
-                <!--<p>Asientos disponibles después de agregar: <span id='seatAfter'></span></p>-->
-                <!-- SELECCIONAR RUTA -->
-            </div>
-        
-            
-            
-                <!-- EVIDENCIAR SI HAY CUPO EN EL BUS AL SELECCIONAR RECORRIDO-->
+                <p>Asientos disponibles: <span id='freeSeat'></span></p>
+
+
+                <div class="frm2element2">
+                    <div class="frm2element2div">
+                        <label class="label" for="children" id="lbChildren">¿Incluye alumnos?</label>
+                        <div class="inputRadio">
+
+                            <input type="radio" name="children" value="sí" id="childrenS"> Sí
+                            <input type="radio" name="children" value="no" id="childrenN" checked> No
+                        </div>
+                    </div>
+                    <div>
+                        <label class="label" for="childenQ"><span id="lbChildrenQ"></span>Cantidad</label>
+                        <input type="number" name="childenQ" id="childrenQ" value="" disabled>
+                    </div>
+
+                </div>
+
+
                 <div id="rpInformation"></div>
                 <button type="submit" id="btnRP">Agregar</button>
             </form>
@@ -79,6 +77,17 @@
         <h2>Recorridos asignados</h2>
         <section class="rpData" id="rpData"></section>
     </main>
+    <footer>
+        <div>
+            <p>&copy;2023 cPanozo</p>
+            <p><a href=".index.html">Inicio</a>
+                <a href="./pages/route.html">Rutas</a>
+                <a href="./pages/staff.html">Personal</a>
+            </p>
+            <p><a href="https://github.com/CPanozo23/FullStack_proy02">Conoce este proyecto</a></p>
+        </div>
+    </footer>
     <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
